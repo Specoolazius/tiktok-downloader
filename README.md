@@ -1,3 +1,6 @@
+# Fork Changes:
+Added info_post() support for long TikTok urls
+
 <p align="center">
 <img src="tiktok_downloader/static/tiktok.svg"><br>
 <img src="https://img.shields.io/badge/AUTHOR-KRYPTON--BYTE-brightgreen">
