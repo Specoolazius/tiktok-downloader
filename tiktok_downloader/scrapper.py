@@ -26,14 +26,22 @@ class Author:
 class info_post(Session):
     def __init__(self, url: str):
         super().__init__()
-        if '.tiktok.com' in url:
-            url = self.get(
-                url,
-                headers=self.headers,
-                allow_redirects=False).text
-        if not findall(r'[0-9]{19}', url):
-            raise InvalidUrl()
-        self.id = findall(r'[0-9]{19}', url)[0]
+
+        # Added support for long url form
+        if '@' and '/video/' in url:
+            self.id = url.split('/video/')[1]
+
+        else:
+            if '.tiktok.com' in url:
+                url = self.get(
+                    url,
+                    headers=self.headers,
+                    allow_redirects=False).text
+            if not findall(r'[0-9]{19}', url):
+                raise InvalidUrl()
+
+            self.id = findall(r'[0-9]{19}', url)[0]
+
         self.aweme = self.get(
             'https://api.tiktokv.com/aweme/v1/aweme/detail/',
             params={'aweme_id': self.id}).json()
