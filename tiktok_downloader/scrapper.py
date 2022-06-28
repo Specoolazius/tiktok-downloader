@@ -61,9 +61,9 @@ class info_post(Session):
         self.create_time = datetime.fromtimestamp(
             self.aweme['aweme_detail']['create_time'])
         self.author = Author(self.aweme['aweme_detail']['author'])
-        self.music_title = self.aweme['aweme_detail']['music']['title']
-        self.music_author = self.aweme['aweme_detail']['music']['author']
-        self.music_duration = self.aweme['aweme_detail']['music']['duration']
+        self.music_title = self.aweme['aweme_detail'].get('music', {}).get('title', None)
+        self.music_author = self.aweme['aweme_detail'].get('music', {}).get('author', None)
+        self.music_duration = self.aweme['aweme_detail'].get('music', {}).get('duration', None)
         self.duration = int(
             self.aweme['aweme_detail']['video']['duration']/1000)
 
