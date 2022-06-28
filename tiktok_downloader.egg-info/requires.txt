@@ -1,5 +1,6 @@
 bs4
-cloudscraper
 flask
-py-mini-racer
+cloudscraper
 requests
+rich
+tqdm
