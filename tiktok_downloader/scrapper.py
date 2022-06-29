@@ -53,7 +53,7 @@ class info_post(Session):
             ['download_addr']['width'])
         self.size = (
             self.aweme['aweme_detail']
-            ['video']['download_addr']['data_size'])
+            ['video']['download_addr'].get('data_size', None))
         self.desc = self.aweme['aweme_detail']['desc']
         self.cover = (
             self.aweme['aweme_detail']
