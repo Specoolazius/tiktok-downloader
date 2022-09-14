@@ -42,7 +42,10 @@ class info_post(Session):
 
             self.id = findall(r'[0-9]{19}', url)[0]
 
-        self.aweme = self.get(f'https://api.tiktokv.com/aweme/v1/aweme/detail/?aweme_id={self.id}').json()
+        self.aweme = self.get(
+            f'https://api.tiktokv.com/aweme/v1/aweme/detail/?aweme_id={self.id}',
+            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0) Gecko/20100101 Firefox/104.0'}
+        ).json()
         self.height = (
             self.aweme['aweme_detail']['video']
             ['download_addr']['height'])
