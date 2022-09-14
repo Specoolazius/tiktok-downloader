@@ -62,8 +62,7 @@ class info_post(Session):
         self.music_title = self.aweme['aweme_detail'].get('music', {}).get('title', None)
         self.music_author = self.aweme['aweme_detail'].get('music', {}).get('author', None)
         self.music_duration = self.aweme['aweme_detail'].get('music', {}).get('duration', None)
-        self.duration = int(
-            self.aweme['aweme_detail']['video']['duration']/1000)
+        self.duration = int(self.aweme['aweme_detail']['video']['duration'] / 1000)
 
     def utils(self) -> list[info_videotiktok]:
         return [
