@@ -90,10 +90,10 @@ class info_post(Session):
         ]['url_list'][0]
 
     def download(
-        self,
-        out: Optional = None,
-        watermark: Optional[bool] = False,
-        chunk_size: int = 1024
+            self,
+            out: Optional = None,
+            watermark: Optional[bool] = False,
+            chunk_size: int = 1024
     ) -> Union[None, BytesIO]:
         request = self.get(self.downloadLink(watermark), stream=True)
         stream = open(out, 'wb') if isinstance(out, str) else BytesIO()
@@ -102,9 +102,9 @@ class info_post(Session):
         return None if isinstance(out, str) else stream
 
     def download_music(
-        self,
-        out: Optional = None,
-        chunk_size: int = 1024
+            self,
+            out: Optional = None,
+            chunk_size: int = 1024
     ) -> Union[None, BytesIO]:
         request = self.get(
             self.aweme['aweme_detail']['music']['play_url']['uri'],
