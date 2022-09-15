@@ -29,7 +29,7 @@ class info_post(Session):
 
         # Added support for long url form
         if '@' and '/video/' in url:
-            self.id = url.split('/video/')[1]
+            self.id = url.split('/video/')[1].split('?')[0]
 
         else:
             if '.tiktok.com' in url:
